@@ -1,0 +1,43 @@
+<div id="header">
+    <h3>Atmosphere Chat</h3>
+</div>
+
+<p data-ng-show="!model.connected">Connecting...</p>
+
+<p>{{model.content}}</p>
+
+<div class="container">
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title" data-ng-show="model.connected">
+                    <span><b>{{model.topic}}</b> Chat room</span>
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="messages">
+                    <p data-ng-repeat="message in model.messages">
+                        <span class="text">{{message.message}}</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <span data-ng-show="!model.topic">Enter Topic:</span>
+    <form data-ng-show="!model.topic"role="form" class="form-horizontal">
+        <div class="form-group">
+            <div class="col-lg-9">
+                <input type="text" class="form-control" id="input-topic" x-webkit-speech/>
+            </div>
+        </div>
+    </form>
+    <span data-ng-show="!model.topic == ''">Enter Message:</span>
+    <form data-ng-show="!model.topic == ''" role="form" class="form-horizontal">
+        <div class="form-group">
+            <div class="col-lg-9">
+                <input type="text" class="form-control" id="input-message" data-ng-disabled="!model.connected" x-webkit-speech/>
+            </div>
+        </div>
+    </form>
+</div>
