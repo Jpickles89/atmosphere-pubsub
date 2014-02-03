@@ -19,6 +19,11 @@ import static org.junit.Assert.assertEquals;
  * Author: Jonathon Robins <jonathon.robins@pressassociation.com>        *
  * Created: 29/01/14 11:31                                               *
  * ***********************************************************************
+ *
+ * Currently integration test run against a deployed instance of the pub/sub application.
+ *
+ * wAsync client behaves weirdly when multiple instances are created.
+ *
  */
 public class EntityPubSubTestIT extends AbstractAtmosphereTest
 {

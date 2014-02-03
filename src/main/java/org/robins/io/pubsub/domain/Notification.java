@@ -30,9 +30,9 @@ public class Notification
     }
 
     public void setUser(String user)
-    {
-        this.user = user;
-    }
+{
+    this.user = user;
+}
 
     public String getTopic()
     {

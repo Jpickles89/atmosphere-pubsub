@@ -27,7 +27,7 @@ controller.controller('chatController', function ($scope) {
     request.onClientTimeout = function(response){
         $scope.model.content = 'Client closed the connection after a timeout. Reconnecting in ' + request.reconnectInterval;
         $scope.model.connected = false;
-        socket.push(JSON.stringify({ topic: $scope.model.topic, message: 'is inactive and closed the connection. Will reconnect in ' + request.reconnectInterval }));
+        socket.push(JSON.stringify({ user: $scope.model.user, topic: $scope.model.topic, message: 'is inactive and closed the connection. Will reconnect in ' + request.reconnectInterval }));
 
         setTimeout(function(){
             socket = atmosphere.subscribe(request);
@@ -54,7 +54,7 @@ controller.controller('chatController', function ($scope) {
         $scope.$apply(function() {
             $scope.model.connected = false;
             $scope.model.content = 'Server closed the connection after a timeout';
-            socket.push(JSON.stringify({ topic: $scope.model.topic, message: 'disconnecting' }));
+            socket.push(JSON.stringify({ user: $scope.model.user, topic: $scope.model.topic, message: 'disconnecting' }));
         })
     };
 

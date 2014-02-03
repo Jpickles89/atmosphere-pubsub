@@ -9,7 +9,19 @@ import org.robins.io.pubsub.domain.Notification;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
-@Path("/entity/{topic}")
+/***
+ *
+ * EntityPubSub: Controllers the publishing and subscriptions of channels.
+ *
+ * Using a greedy regex @path expression we can using any number of paths/params to create channels.
+ *
+ * Example:
+ *      /entity/type/subtype/id
+ *
+ * Creates Channel: {type/subtype/id}
+ *
+ */
+@Path("/entity/{topic:.+}")
 @Produces(MediaType.APPLICATION_JSON)
 public class EntityPubSub
 {
