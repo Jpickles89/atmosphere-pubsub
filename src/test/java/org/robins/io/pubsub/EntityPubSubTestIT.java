@@ -43,13 +43,13 @@ public class EntityPubSubTestIT extends AbstractAtmosphereTest
         Socket socket2 = createSocket("test1", notifications2);
         Socket socket3 = createSocket("test2", notifications3);
 
-        socket1.fire(new Notification("test1", "Message 1"));
+        socket1.fire(new Notification("Walter", "test1", "Message 1"));
         Thread.sleep(500);
 
-        socket2.fire(new Notification("test1", "Message 2"));
+        socket2.fire(new Notification("Saul", "test1", "Message 2"));
         Thread.sleep(500);
 
-        socket3.fire(new Notification("test2", "Message 3"));
+        socket3.fire(new Notification("Gus", "test2", "Message 3"));
         Thread.sleep(500);
 
         socket1.close();

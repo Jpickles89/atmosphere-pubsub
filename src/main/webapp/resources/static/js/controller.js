@@ -73,7 +73,7 @@ controller.controller('chatController', function ($scope) {
             var responseText = response.responseBody;
             try{
                 var message = JSON.parse(responseText);
-                $scope.model.messages.push({topic: message.topic, message: message.message});
+                $scope.model.messages.push({user: message.user, topic: message.topic, message: message.message});
 
             }catch(e){
                 console.error("Error parsing JSON: ", responseText);
@@ -89,6 +89,7 @@ controller.controller('chatController', function ($scope) {
     }
 
     var inputTopic = $('#input-topic');
+    var inputUser = $('#input-user');
     var inputMessage = $('#input-message');
 
     inputTopic.keydown(function(event){
@@ -104,12 +105,25 @@ controller.controller('chatController', function ($scope) {
         }
     });
 
+    inputUser.keydown(function(event){
+        var user = this;
+        var msg = $(user).val();
+        if(msg && msg.length > 0 && event.keyCode === 13){
+
+            $scope.$apply(function(){
+                if(!$scope.model.user)
+                    $scope.model.user = msg;
+                $(user).val('');
+            });
+        }
+    });
+
     inputMessage.keydown(function(event){
         var message = this;
         var msg = $(message).val();
         if(event.keyCode === 13){
             $scope.$apply(function(){
-                socket.push(JSON.stringify({topic: $scope.model.topic, message: msg}));
+                socket.push(JSON.stringify({user: $scope.model.user, topic: $scope.model.topic, message: msg}));
                 $(message).val('');
             });
         }

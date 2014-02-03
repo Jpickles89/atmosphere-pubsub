@@ -28,7 +28,6 @@ public class EntityPubSub
     public Broadcastable publish(Notification notification)
     {
         notification.setTopic(topic.getID());
-
         return new Broadcastable(notification, topic);
     }
 }
